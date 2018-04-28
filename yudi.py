@@ -146,7 +146,7 @@ helpMessage1 =
 "™↔ " + key + "Refresh\n" + \
 """
 
-"™↔[ Selfbot Menu ]™
+"™↔[ Selfbot Menu ]
 "™↔ " + key + "Cek sider\n" + \
 "™↔ " + key + "Cek spam\n" + \
 "™↔ " + key + "Cek pesan \n" + \
