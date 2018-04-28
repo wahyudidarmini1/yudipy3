@@ -149,158 +149,144 @@ cctv = {
 #Setbot = codecs.open("setting.json","r","utf-8")
 #Setmain = json.load(Setbot)
 
-while True:
-    try:
-        ops=poll.singleTrace(count=50)
-        for op in ops:
-            if op.type == 26:
-                msg = op.message
-                if msg.text != None:
-                    if msg.toType == 2:
-                        may = client.getProfile().mid
-                        if may in str(msg.contentMetadata) and 'MENTION' in str(msg.contentMetadata):
-                            pilih = ['yang tag sy semoga jomblo seumur hidup','ngapain tag tag woe, kangen?','ada apa ini? ko di tag?','duhh kena tag, dianya kesepian kali yah','gk usah tag, gift tikel aja']
-                            rslt = random.choice(pilih)
-                            client.sendText(msg.to, str(rslt))
-                      
 #tz = pytz.timezone("Asia/Jakarta")
 #timeNow = datetime.now(tz=tz)
 
-def restart_program(): 
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
+#def restart_program(): 
+#    python = sys.executable
+#    os.execl(python, python, * sys.argv)
 
-def restartBot():
-    python = sys.executable
-    os.execl(python, python, *sys.argv)
+#def restartBot():
+#    python = sys.executable
+ #   os.execl(python, python, *sys.argv)
 
-def waktu(secs):
-    mins, secs = divmod(secs,60)
-    hours, mins = divmod(mins,60)
-    days, hours = divmod(hours, 24)
-    return '%02d Hari %02d Jam %02d Menit %02d Detik' % (days, hours, mins, secs)
+#def waktu(secs):
+#    mins, secs = divmod(secs,60)
+#    hours, mins = divmod(mins,60)
+ #   days, hours = divmod(hours, 24)
+  #  return '%02d Hari %02d Jam %02d Menit %02d Detik' % (days, hours, mins, secs)
 
-def runtime(secs):
-    mins, secs = divmod(secs,60)
-    hours, mins = divmod(mins,60)
-    days, hours = divmod(hours, 24)
-    return '%02d Hari %02d Jam %02d Menit %02d Detik' % (days, hours, mins, secs)
+#def runtime(secs):
+#    mins, secs = divmod(secs,60)
+  #  hours, mins = divmod(mins,60)
+  #  days, hours = divmod(hours, 24)
+  #  return '%02d Hari %02d Jam %02d Menit %02d Detik' % (days, hours, mins, secs)
 
-def mentionMembers(to, mid):
-    try:
-        arrData = ""
-        textx = "Total Mention User「{}」\n\n  [ Mention ]\n1. ".format(str(len(mid)))
-        arr = []
-        no = 1
-        num = 2
-        for i in mid:
-            mention = "@x\n"
-            slen = str(len(textx))
-            elen = str(len(textx) + len(mention) - 1)
-            arrData = {'S':slen, 'E':elen, 'M':i}
-            arr.append(arrData)
-            textx += mention
-            if no < len(mid):
-                no += 1
-                textx += "%i. " % (num)
-                num=(num+1)
-            else:
-                try:
-                    no = "\n╚══[ {} ]".format(str(cl.getGroup(to).name))
-                except:
-                    no = "\n╚══[ Success ]"
-        cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-    except Exception as error:
-        cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
+#def mentionMembers(to, mid):
+  #  try:
+ #       arrData = ""
+ #       textx = "Total Mention User「{}」\n\n  [ Mention ]\n1. ".format(str(len(mid)))
+  #      arr = []
+ #       no = 1
+ #       num = 2
+  #      for i in mid:
+  #          mention = "@x\n"
+  #          slen = str(len(textx))
+ #           elen = str(len(textx) + len(mention) - 1)
+ #           arrData = {'S':slen, 'E':elen, 'M':i}
+ #           arr.append(arrData)
+ #           textx += mention
+ #           if no < len(mid):
+ #               no += 1
+ #               textx += "%i. " % (num)
+  #              num=(num+1)
+  #          else:
+  #              try:
+  #                  no = "\n╚══[ {} ]".format(str(cl.getGroup(to).name))
+ #               except:
+  #                  no = "\n╚══[ Success ]"
+  #      cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+  #  except Exception as error:
+  #      cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
 
-def siderMembers(to, mid):
-    try:
-        arrData = ""
-        textx = "Total Sider User「{}」\nHaii ".format(str(len(mid)))
-        arr = []
-        no = 1
-        num = 2
-        for i in mid:
-            mention = "@x\n"
-            slen = str(len(textx))
-            elen = str(len(textx) + len(mention) - 1)
-            arrData = {'S':slen, 'E':elen, 'M':i}
-            arr.append(arrData)
-            textx += mention+wait["mention"]
-            if no < len(mid):
-                no += 1
-                textx += "%i. " % (num)
-                num=(num+1)
-            else:
-                try:
-                    no = "\n╚══[ {} ]".format(str(cl.getGroup(to).name))
-                except:
-                    no = "\n╚══[ Success ]"
-        cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-    except Exception as error:
-        cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
+#def siderMembers(to, mid):
+ #   try:
+  #      arrData = ""
+   #     textx = "Total Sider User「{}」\nHaii ".format(str(len(mid)))
+  #      arr = []
+  #      no = 1
+   #     num = 2
+   #     for i in mid:
+  #          mention = "@x\n"
+  #          slen = str(len(textx))
+  #          elen = str(len(textx) + len(mention) - 1)
+  #          arrData = {'S':slen, 'E':elen, 'M':i}
+  #          arr.append(arrData)
+  #          textx += mention+wait["mention"]
+   #         if no < len(mid):
+   #             no += 1
+    #            textx += "%i. " % (num)
+  #              num=(num+1)
+  #          else:
+   #             try:
+  #                  no = "\n╚══[ {} ]".format(str(cl.getGroup(to).name))
+   #             except:
+   #                 no = "\n╚══[ Success ]"
+    #    cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+    #except Exception as error:
+  #      cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
 
-def welcomeMembers(to, mid):
-    try:
-        arrData = ""
-        textx = "Total Member Masuk「{}」\nHaii  ".format(str(len(mid)))
-        arr = []
-        no = 1
-        num = 2
-        for i in mid:
-            ginfo = cl.getGroup(to)
-            mention = "@x\n"
-            slen = str(len(textx))
-            elen = str(len(textx) + len(mention) - 1)
-            arrData = {'S':slen, 'E':elen, 'M':i}
-            arr.append(arrData)
-            textx += mention+wait["welcome"]+"\nNama grup : "+str(ginfo.name)
-            if no < len(mid):
-                no += 1
-                textx += "%i " % (num)
-                num=(num+1)
-            else:
-                try:
-                    no = "\n╚══[ {} ]".format(str(cl.getGroup(to).name))
-                except:
-                    no = "\n╚══[ Success ]"
-        cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-    except Exception as error:
-        cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
+#def welcomeMembers(to, mid):
+   # try:
+   #     arrData = ""
+    #    textx = "Total Member Masuk「{}」\nHaii  ".format(str(len(mid)))
+    #    arr = []
+     #   no = 1
+    #    num = 2
+    #    for i in mid:
+    #        ginfo = cl.getGroup(to)
+    #        mention = "@x\n"
+    #        slen = str(len(textx))
+    #        elen = str(len(textx) + len(mention) - 1)
+    #        arrData = {'S':slen, 'E':elen, 'M':i}
+    #        arr.append(arrData)
+   #         textx += mention+wait["welcome"]+"\nNama grup : "+str(ginfo.name)
+    #        if no < len(mid):
+    #            no += 1
+    #            textx += "%i " % (num)
+   #             num=(num+1)
+    #        else:
+    #            try:
+    #                no = "\n╚══[ {} ]".format(str(cl.getGroup(to).name))
+   #             except:
+   #                 no = "\n╚══[ Success ]"
+   #     cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+  #  except Exception as error:
+    #    cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
 
-def sendMention(to, mid, firstmessage):
-    try:
-        arrData = ""
-        text = "%s " %(str(firstmessage))
-        arr = []
-        mention = "@x \n"
-        slen = str(len(text))
-        elen = str(len(text) + len(mention) - 1)
-        arrData = {'S':slen, 'E':elen, 'M':mid}
-        arr.append(arrData)
-        today = datetime.today()
-        future = datetime(2018,3,1)
-        hari = (str(future - today))
-        comma = hari.find(",")
-        hari = hari[:comma]
-        teman = cl.getAllContactIds()
-        gid = cl.getGroupIdsJoined()
-        tz = pytz.timezone("Asia/Jakarta")
-        timeNow = datetime.now(tz=tz)
-        eltime = time.time() - mulai
-        bot = runtime(eltime)
-        text += mention+"™↔ Jam : "+datetime.strftime(timeNow,'%H:%M:%S')+" Wib\n™↔ Group : "+str(len(gid))+"\n™↔ Teman : "+str(len(teman))+"\n™↔ Expired : In "+hari+"\n™↔ Version : Saints Bot\n™↔ Tanggal : "+datetime.strftime(timeNow,'%Y-%m-%d')+"\n™↔ Runtime : \n • "+bot
-        cl.sendMessage(to, text, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-    except Exception as error:
-        cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
+#def sendMention(to, mid, firstmessage):
+ #   try:
+#        arrData = ""
+#        text = "%s " %(str(firstmessage))
+#        arr = []
+#        mention = "@x \n"
+#        slen = str(len(text))
+#        elen = str(len(text) + len(mention) - 1)
+#        arrData = {'S':slen, 'E':elen, 'M':mid}
+#        arr.append(arrData)
+#        today = datetime.today()
+#        future = datetime(2018,3,1)
+ #       hari = (str(future - today))
+#        comma = hari.find(",")
+#        hari = hari[:comma]
+#        teman = cl.getAllContactIds()
+#        gid = cl.getGroupIdsJoined()
+#        tz = pytz.timezone("Asia/Jakarta")
+ #       timeNow = datetime.now(tz=tz)
+#        eltime = time.time() - mulai
+#        bot = runtime(eltime)
+ #       text += mention+"™↔ Jam : "+datetime.strftime(timeNow,'%H:%M:%S')+" Wib\n™↔ Group : "+str(len(gid))+"\n™↔ Teman : "+str(len(teman))+"\n™↔ Expired : In "+hari+"\n™↔ Version : Saints Bot\n™↔ Tanggal : "+datetime.strftime(timeNow,'%Y-%m-%d')+"\n™↔ Runtime : \n • "+bot
+ #       cl.sendMessage(to, text, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+#    except Exception as error:
+ #       cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
 
-def command(text):
-    pesan = text.lower()
-    if pesan.startswith(Setmain["keyCommand"]):
-        cmd = pesan.replace(Setmain["keyCommand"],"")
-    else:
-        cmd = "command"
-    return cmd
+#def command(text):
+#    pesan = text.lower()
+#    if pesan.startswith(Setmain["keyCommand"]):
+ #       cmd = pesan.replace(Setmain["keyCommand"],"")
+ #   else:
+   #     cmd = "command"
+#    return cmd
 
 def help():
     key = Setmain["keyCommand"]
