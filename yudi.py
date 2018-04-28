@@ -35,7 +35,7 @@ sw.log("Auth Token : " + str(sw.authToken))
 channel11 = LineChannel(sw)
 sw.log("Channel Access Token : " + str(channel11.channelAccessToken))
 
-print login success
+print 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
