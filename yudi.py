@@ -38,7 +38,8 @@ sw.log("Channel Access Token : " + str(channel11.channelAccessToken))
 print 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-helpMessage = "™[ Selfbot Menu ]
+helpMessage = "™
+"™↔[ Selfbot Menu ]
 "™↔ " + key + "Me\n" + \
 "™↔ " + key + "Mid「@」\n" + \
 "™↔ " + key + "Info「@」\n" + \
