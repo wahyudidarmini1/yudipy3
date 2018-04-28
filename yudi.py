@@ -167,7 +167,7 @@ while True:
                     else:
                         pass
                 else:
-pass
+    pass
 
 #tz = pytz.timezone("Asia/Jakarta")
 #timeNow = datetime.now(tz=tz)
