@@ -35,8 +35,131 @@ sw.log("Auth Token : " + str(sw.authToken))
 channel11 = LineChannel(sw)
 sw.log("Channel Access Token : " + str(channel11.channelAccessToken))
 
-poll = LinePoll(cl)
-call = LineCall(cl)
+print "═══「vipro login success」═══"
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+    helpMessage = "™[ Selfbot Menu ]™\n   Gunakan「 " + key + " 」di depannya\n\n" + \
+                  "™↔ " + key + "Me\n" + \
+                  "™↔ " + key + "Mid「@」\n" + \
+                  "™↔ " + key + "Info「@」\n" + \
+                  "™↔ " + key + "Nk「@」\n" + \
+                  "™↔ " + key + "Kick1「@」\n" + \
+                  "™↔ " + key + "Mybot\n" + \
+                  "™↔ " + key + "Status\n" + \
+                  "™↔ " + key + "About\n" + \
+                  "™↔ " + key + "Restart\n" + \
+                  "™↔ " + key + "Runtime\n" + \
+                  "™↔ " + key + "Creator\n" + \
+                  "™↔ " + key + "Speed/Sp\n" + \
+                  "™↔ " + key + "Sprespon\n" + \
+                  "™↔ " + key + "Tagall\n" + \
+                  "™↔ " + key + "Joinall\n" + \
+                  "™↔ " + key + "Byeall\n" + \
+                  "™↔ " + key + "Byeme\n" + \
+                  "™↔ " + key + "Leave「Namagrup」\n" + \
+                  "™↔ " + key + "Ginfo\n" + \
+                  "™↔ " + key + "Open\n" + \
+                  "™↔ " + key + "Close\n" + \
+                  "™↔ " + key + "Url grup\n" + \
+                  "™↔ " + key + "Gruplist\n" + \
+                  "™↔ " + key + "Infogrup「angka」\n" + \
+                  "™↔ " + key + "Infomem「angka」\n" + \
+                  "™↔ " + key + "Remove chat\n" + \
+                  "™↔ " + key + "Lurking「on/off」\n" + \
+                  "™↔ " + key + "Lurkers\n" + \
+                  "™↔ " + key + "Sider「on/off」\n" + \
+                  "™ " + key + "Updatefoto\n" + \
+                  "™↔ " + key + "Updategrup\n" + \
+                  "™↔ " + key + "Updatebot\n" + \
+                  "™↔ " + key + "Broadcast:「Text」\n" + \
+                  "™↔ " + key + "Setkey「New Key」\n" + \
+                  "™↔ " + key + "Mykey\n" + \
+                  "™↔ " + key + "Resetkey\n" + \
+                  "\n ™[Selfbot Hiburan]™\n   Gunakan「 " + key + " 」di depannya\n\n" + \
+                  "™↔ " + key + "ID line:「Id Line nya」\n" + \
+                  "™↔ " + key + "Sholat:「Nama Kota」\n" + \
+                  "™↔ " + key + "Cuaca:「Nama Kota」\n" + \
+                  "™↔ " + key + "Lokasi:「Nama Kota」\n" + \
+                  "™↔ " + key + "Music:「Judul Lagu」\n" + \
+                  "™↔ " + key + "Lirik:「Judul Lagu」\n" + \
+                  "™↔ " + key + "Ytmp3:「Judul Lagu」\n" + \
+                  "™↔ " + key + "Ytmp4:「Judul Video」\n" + \
+                  "™↔ " + key + "Profileig:「Nama IG」\n" + \
+                  "™↔ " + key + "Cekdate:「tgl-bln-thn」\n" + \
+                  "™↔ " + key + "Jumlah:「angka」\n" + \
+                  "™↔ " + key + "Spamtag「@」\n" + \
+                  "™↔ " + key + "Spamcall:「jumlahnya」\n" + \
+                  "™↔ " + key + "Spamcall\n" + \
+                  "\n™[ Selfbot Protection ]™\n   Jangan gunakan「 " + key + " 」di depannya\n\n" + \
+                  "™↔ " + key + "Notag「on/off」\n" + \
+                  "™↔ " + key + "Semuapro「on/off」\n" + \
+                  "™↔ " + key + "Protecturl「on/off」\n" + \
+                  "™↔ " + key + "Protectjoin「on/off」\n" + \
+                  "™↔ " + key + "Protectkick「on/off」\n" + \
+                  "™↔ " + key + "Protectcancel「on/off」\n" + \
+                  "\n™[ Selfbot Settings ]™\n   Jangan gunakan「 " + key + " 」di depannya\n\n" + \
+                  "™↔ " + key + "Sticker「on/off」\n" + \
+                  "™↔ " + key + "Respon「on/off」\n" + \
+                  "™↔ " + key + "Contact「on/off」\n" + \
+                  "™↔ " + key + "Autojoin「on/off」\n" + \
+                  "™↔ " + key + "Autoadd「on/off」\n" + \
+                  "™↔ " + key + "Welcome「on/off」\n" + \
+                  "™↔ " + key + "Autoleave「on/off」\n" + \
+                  "\n™[ Selfbot Admin ]™\n    Jangan gunakan「 " + key + " 」di depannya\n\n" + \
+                  "™↔ " + key + "Admin:on\n" + \
+                  "™↔ " + key + "Admin:repeat\n" + \
+                  "™↔ " + key + "Staff:on\n" + \
+                  "™↔ " + key + "Staff:repeat\n" + \
+                  "™↔ " + key + "Bot:on\n" + \
+                  "™↔ " + key + "Bot:repeat\n" + \
+                  "™↔ " + key + "Adminadd「@」\n" + \
+                  "™↔ " + key + "Admindell「@」\n" + \
+                  "™↔ " + key + "Staffadd「@」\n" + \
+                  "™↔ " + key + "Staffdell「@」\n" + \
+                  "™↔ " + key + "Botadd「@」\n" + \
+                  "™↔ " + key + "Botdell「@」\n" + \
+                  "™↔ " + key + "Refresh\n" + \
+                  "™↔ " + key + "Listbot\n" + \
+                  "™↔ " + key + "Listadmin\n" + \
+                  "™↔ " + key + "Listprotect\n" + \
+                  
+    helpMessage1 = "™[ Selfbot Blacklist ]™\n   Jangan gunakan「 " + key + " 」di depannya\n\n" + \
+                  "™↔ " + key + "Blc\n" + \
+                  "™↔ " + key + "Ban:on\n" + \
+                  "™↔ " + key + "Unban:on\n" + \
+                  "™↔ " + key + "Ban「@」\n" + \
+                  "™↔ " + key + "Unban「@」\n" + \
+                  "™↔ " + key + "Talkban「@」\n" + \
+                  "™↔ " + key + "Untalkban「@」\n" + \
+                  "™↔ " + key + "Talkban:on\n" + \
+                  "™↔ " + key + "Untalkban:on\n" + \
+                  "™↔ " + key + "Banlist\n" + \
+                  "™↔ " + key + "Talkbanlist\n" + \
+                  "™↔ " + key + "Clearban\n" + \
+                  "™↔ " + key + "Refresh\n" + \
+                  "\n™[ Selfbot Menu ]™\n    Gunakan「 " + key + " 」di depannya\n\n" + \
+                  "™↔ " + key + "Cek sider\n" + \
+                  "™↔ " + key + "Cek spam\n" + \
+                  "™↔ " + key + "Cek pesan \n" + \
+                  "™↔ " + key + "Cek respon \n" + \
+                  "™↔ " + key + "Cek welcome\n" + \
+                  "™↔ " + key + "Set sider:「Text」\n" + \
+                  "™↔ " + key + "Set spam:「Text」\n" + \
+                  "™↔ " + key + "Set pesan:「Text」\n" + \
+                  "™↔ " + key + "Set respon:「Text」\n" + \
+                  "™↔ " + key + "Set welcome:「Text」\n" + \
+                  "™↔ " + key + "Myname:「Nama」\n" + \
+                  "™↔ " + key + "Bot1name:「Nama」\n" + \
+                  "™↔ " + key + "Bot2name:「Nama」\n" + \
+                  "™↔ " + key + "Bot3name:「Nama」\n" + \
+                  "™↔ " + key + "Bot1up「Kirim fotonya」\n" + \
+                  "™↔ " + key + "Bot2up「Kirim fotonya」\n" + \
+                  "™↔ " + key + "Bot3up「Kirim fotonya」\n" + \
+                  "™↔ " + key + "Gift:「Mid korban」「Jumlah」\n" + \
+                  "™↔ " + key + "Spam:「Mid korban」「Jumlah」\n" + \
+                  
+
 creator = ["u6b34b703cbc5fc83cd1e5b6832a05352"]
 owner = ["u6b34b703cbc5fc83cd1e5b6832a05352"]
 admin = ["u6b34b703cbc5fc83cd1e5b6832a05352"]
@@ -62,35 +185,74 @@ responsename1 = ki.getProfile().displayName
 responsename2 = kk.getProfile().displayName
 responsename3 = kc.getProfile().displayName
 
-settings = {
-    "Picture":False,
-    "group":{},
-    "groupPicture":False,
-    "changePicture":False,
-    "autoJoinTicket":False,
-    "userAgent": [
-        "Mozilla/5.0 (X11; U; Linux i586; de; rv:5.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (X11; U; Linux amd64; rv:5.0) Gecko/20100101 Firefox/5.0 (Debian)",
-        "Mozilla/5.0 (X11; U; Linux amd64; en-US; rv:5.0) Gecko/20110619 Firefox/5.0",
-        "Mozilla/5.0 (X11; Linux) Gecko Firefox/5.0",
-        "Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0 FirePHP/0.5",
-        "Mozilla/5.0 (X11; Linux x86_64; rv:5.0) Gecko/20100101 Firefox/5.0 Firefox/5.0",
-        "Mozilla/5.0 (X11; Linux x86_64) Gecko Firefox/5.0",
-        "Mozilla/5.0 (X11; Linux ppc; rv:5.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (X11; Linux AMD64) Gecko Firefox/5.0",
-        "Mozilla/5.0 (X11; FreeBSD amd64; rv:5.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 6.2; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:5.0) Gecko/20110619 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:5.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 6.1; rv:6.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 6.1.1; rv:5.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 5.2; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 5.1; U; rv:5.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 5.1; rv:2.0.1) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 5.0; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0",
-        "Mozilla/5.0 (Windows NT 5.0; rv:5.0) Gecko/20100101 Firefox/5.0"
-    ]
-}
+readOpen = codecs.open("st2__b.json","r","utf-8")
+read = json.load(readOpen)
+
+contact = vipro.getProfile()
+restoreprofile = vipro.getProfile()
+restoreprofile.displayName = contact.displayName
+restoreprofile.statusMessage = contact.statusMessage                        
+restoreprofile.pictureStatus = contact.pictureStatus
+
+contact = vipro.getProfile()
+backup = vipro.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki.getProfile()
+backup = ki.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki2.getProfile()
+backup = ki2.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki3.getProfile()
+backup = ki3.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki4.getProfile()
+backup = ki4.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki5.getProfile()
+backup = ki5.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki6.getProfile()
+backup = ki6.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki7.getProfile()
+backup = ki7.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki8.getProfile()
+backup = ki8.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki9.getProfile()
+backup = ki9.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
 
 wait = {
     "limit": 1,
@@ -128,21 +290,33 @@ wait = {
     "message":"Thanks add me🙏\n™CxB team™\n\nOpen Order:\n™↔ 1 Sb + 3 assist\n™↔ 1 Sb + 5 assist\n\nMinat?\nCpc bouuusss...",
     }
 
-read = {
-    "readPoint":{},
-    "readMember":{},
-    "readTime":{},
-    "ROM":{},
-}
-
+wait2 = {
+    'readPoint':{},
+    'readMember':{},
+    'setTime':{},
+    'ROM':{}
+    }
+mimic = {
+    "copy":False,
+    "copy2":False,
+    "status":False,
+    "target":{}
+    }
+settings = {
+    "simiSimi":{}
+    }
+res = {
+    'num':{},
+    'us':{},
+    'au':{},
+    }
 cctv = {
     "cyduk":{},
     "point":{},
     "sidermem":{}
 }
-
 setTime = {}
-#setTime = wait2['setTime']
+setTime = wait2['setTime']
 mulai = time.time() 
 def cms(string, commands): #/XXX, >XXX, ;XXX, ^XXX, %XXX, $XXX...
     tex = ["+","@","/",">",";","^","%","$","＾","サテラ:","サテラ:","サテラ：","サテラ："]
@@ -399,150 +573,9 @@ def NOTIFIED_READ_MESSAGE(op):
 def waktu(secs):
     mins, secs = divmod(secs,60)
     hours, mins = divmod(mins,60)
-    return '%02d Jam %02d Menit %02d Detik' % (hours,mins,secs)
-
-def command(text):
-    pesan = text.lower()
-    if pesan.startswith(Setmain["keyCommand"]):
-        cmd = pesan.replace(Setmain["keyCommand"],"")
-    else:
-        cmd = "command"
-    return cmd
-
-def help():
-    key = Setmain["keyCommand"]
-    key = key.title()
-    helpMessage = "™[ Selfbot Menu ]™\n   Gunakan「 " + key + " 」di depannya\n\n" + \
-                  "™↔ " + key + "Me\n" + \
-                  "™↔ " + key + "Mid「@」\n" + \
-                  "™↔ " + key + "Info「@」\n" + \
-                  "™↔ " + key + "Nk「@」\n" + \
-                  "™↔ " + key + "Kick1「@」\n" + \
-                  "™↔ " + key + "Mybot\n" + \
-                  "™↔ " + key + "Status\n" + \
-                  "™↔ " + key + "About\n" + \
-                  "™↔ " + key + "Restart\n" + \
-                  "™↔ " + key + "Runtime\n" + \
-                  "™↔ " + key + "Creator\n" + \
-                  "™↔ " + key + "Speed/Sp\n" + \
-                  "™↔ " + key + "Sprespon\n" + \
-                  "™↔ " + key + "Tagall\n" + \
-                  "™↔ " + key + "Joinall\n" + \
-                  "™↔ " + key + "Byeall\n" + \
-                  "™↔ " + key + "Byeme\n" + \
-                  "™↔ " + key + "Leave「Namagrup」\n" + \
-                  "™↔ " + key + "Ginfo\n" + \
-                  "™↔ " + key + "Open\n" + \
-                  "™↔ " + key + "Close\n" + \
-                  "™↔ " + key + "Url grup\n" + \
-                  "™↔ " + key + "Gruplist\n" + \
-                  "™↔ " + key + "Infogrup「angka」\n" + \
-                  "™↔ " + key + "Infomem「angka」\n" + \
-                  "™↔ " + key + "Remove chat\n" + \
-                  "™↔ " + key + "Lurking「on/off」\n" + \
-                  "™↔ " + key + "Lurkers\n" + \
-                  "™↔ " + key + "Sider「on/off」\n" + \
-                  "™ " + key + "Updatefoto\n" + \
-                  "™↔ " + key + "Updategrup\n" + \
-                  "™↔ " + key + "Updatebot\n" + \
-                  "™↔ " + key + "Broadcast:「Text」\n" + \
-                  "™↔ " + key + "Setkey「New Key」\n" + \
-                  "™↔ " + key + "Mykey\n" + \
-                  "™↔ " + key + "Resetkey\n" + \
-                  "\n ™[Selfbot Hiburan]™\n   Gunakan「 " + key + " 」di depannya\n\n" + \
-                  "™↔ " + key + "ID line:「Id Line nya」\n" + \
-                  "™↔ " + key + "Sholat:「Nama Kota」\n" + \
-                  "™↔ " + key + "Cuaca:「Nama Kota」\n" + \
-                  "™↔ " + key + "Lokasi:「Nama Kota」\n" + \
-                  "™↔ " + key + "Music:「Judul Lagu」\n" + \
-                  "™↔ " + key + "Lirik:「Judul Lagu」\n" + \
-                  "™↔ " + key + "Ytmp3:「Judul Lagu」\n" + \
-                  "™↔ " + key + "Ytmp4:「Judul Video」\n" + \
-                  "™↔ " + key + "Profileig:「Nama IG」\n" + \
-                  "™↔ " + key + "Cekdate:「tgl-bln-thn」\n" + \
-                  "™↔ " + key + "Jumlah:「angka」\n" + \
-                  "™↔ " + key + "Spamtag「@」\n" + \
-                  "™↔ " + key + "Spamcall:「jumlahnya」\n" + \
-                  "™↔ " + key + "Spamcall\n" + \
-                  "\n™[ Selfbot Protection ]™\n   Jangan gunakan「 " + key + " 」di depannya\n\n" + \
-                  "™↔ " + key + "Notag「on/off」\n" + \
-                  "™↔ " + key + "Semuapro「on/off」\n" + \
-                  "™↔ " + key + "Protecturl「on/off」\n" + \
-                  "™↔ " + key + "Protectjoin「on/off」\n" + \
-                  "™↔ " + key + "Protectkick「on/off」\n" + \
-                  "™↔ " + key + "Protectcancel「on/off」\n" + \
-                  "\n™[ Selfbot Settings ]™\n   Jangan gunakan「 " + key + " 」di depannya\n\n" + \
-                  "™↔ " + key + "Sticker「on/off」\n" + \
-                  "™↔ " + key + "Respon「on/off」\n" + \
-                  "™↔ " + key + "Contact「on/off」\n" + \
-                  "™↔ " + key + "Autojoin「on/off」\n" + \
-                  "™↔ " + key + "Autoadd「on/off」\n" + \
-                  "™↔ " + key + "Welcome「on/off」\n" + \
-                  "™↔ " + key + "Autoleave「on/off」\n" + \
-                  "\n™[ Selfbot Admin ]™\n    Jangan gunakan「 " + key + " 」di depannya\n\n" + \
-                  "™↔ " + key + "Admin:on\n" + \
-                  "™↔ " + key + "Admin:repeat\n" + \
-                  "™↔ " + key + "Staff:on\n" + \
-                  "™↔ " + key + "Staff:repeat\n" + \
-                  "™↔ " + key + "Bot:on\n" + \
-                  "™↔ " + key + "Bot:repeat\n" + \
-                  "™↔ " + key + "Adminadd「@」\n" + \
-                  "™↔ " + key + "Admindell「@」\n" + \
-                  "™↔ " + key + "Staffadd「@」\n" + \
-                  "™↔ " + key + "Staffdell「@」\n" + \
-                  "™↔ " + key + "Botadd「@」\n" + \
-                  "™↔ " + key + "Botdell「@」\n" + \
-                  "™↔ " + key + "Refresh\n" + \
-                  "™↔ " + key + "Listbot\n" + \
-                  "™↔ " + key + "Listadmin\n" + \
-                  "™↔ " + key + "Listprotect\n" + \
-                  "\nKetik「 Refresh 」Setelah\nmenggunakan command...\n"
-    return helpMessage
-
-def helpbot():
-    key = Setmain["keyCommand"]
-    key = key.title()
-    helpMessage1 = "™[ Selfbot Blacklist ]™\n   Jangan gunakan「 " + key + " 」di depannya\n\n" + \
-                  "™↔ " + key + "Blc\n" + \
-                  "™↔ " + key + "Ban:on\n" + \
-                  "™↔ " + key + "Unban:on\n" + \
-                  "™↔ " + key + "Ban「@」\n" + \
-                  "™↔ " + key + "Unban「@」\n" + \
-                  "™↔ " + key + "Talkban「@」\n" + \
-                  "™↔ " + key + "Untalkban「@」\n" + \
-                  "™↔ " + key + "Talkban:on\n" + \
-                  "™↔ " + key + "Untalkban:on\n" + \
-                  "™↔ " + key + "Banlist\n" + \
-                  "™↔ " + key + "Talkbanlist\n" + \
-                  "™↔ " + key + "Clearban\n" + \
-                  "™↔ " + key + "Refresh\n" + \
-                  "\n™[ Selfbot Menu ]™\n    Gunakan「 " + key + " 」di depannya\n\n" + \
-                  "™↔ " + key + "Cek sider\n" + \
-                  "™↔ " + key + "Cek spam\n" + \
-                  "™↔ " + key + "Cek pesan \n" + \
-                  "™↔ " + key + "Cek respon \n" + \
-                  "™↔ " + key + "Cek welcome\n" + \
-                  "™↔ " + key + "Set sider:「Text」\n" + \
-                  "™↔ " + key + "Set spam:「Text」\n" + \
-                  "™↔ " + key + "Set pesan:「Text」\n" + \
-                  "™↔ " + key + "Set respon:「Text」\n" + \
-                  "™↔ " + key + "Set welcome:「Text」\n" + \
-                  "™↔ " + key + "Myname:「Nama」\n" + \
-                  "™↔ " + key + "Bot1name:「Nama」\n" + \
-                  "™↔ " + key + "Bot2name:「Nama」\n" + \
-                  "™↔ " + key + "Bot3name:「Nama」\n" + \
-                  "™↔ " + key + "Bot1up「Kirim fotonya」\n" + \
-                  "™↔ " + key + "Bot2up「Kirim fotonya」\n" + \
-                  "™↔ " + key + "Bot3up「Kirim fotonya」\n" + \
-                  "™↔ " + key + "Gift:「Mid korban」「Jumlah」\n" + \
-                  "™↔ " + key + "Spam:「Mid korban」「Jumlah」\n" + \
-                  "\nKetik「 Refresh 」jika sudah\nmenggunakan command\n"
-    return helpMessage1
+    return '%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)
 
 def bot(op):
-    global time
-    global ast
-    global groupParam
     try:
         if op.type == 0:
             return
