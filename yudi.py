@@ -142,7 +142,7 @@ cctv = {
 }
 
 setTime = {}
-setTime = wait2['setTime']
+#setTime = wait2['setTime']
 mulai = time.time() 
 def cms(string, commands): #/XXX, >XXX, ;XXX, ^XXX, %XXX, $XXX...
     tex = ["+","@","/",">",";","^","%","$","＾","サテラ:","サテラ:","サテラ：","サテラ："]
