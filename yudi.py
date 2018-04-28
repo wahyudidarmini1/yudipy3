@@ -141,152 +141,273 @@ cctv = {
     "sidermem":{}
 }
 
-#with open('creator.json', 'r') as fp:
-    #creator = json.load(fp)
-#with open('owner.json', 'r') as fp:
-    #owner = json.load(fp)
+setTime = {}
+setTime = wait2['setTime']
+mulai = time.time() 
+def cms(string, commands): #/XXX, >XXX, ;XXX, ^XXX, %XXX, $XXX...
+    tex = ["+","@","/",">",";","^","%","$","＾","サテラ:","サテラ:","サテラ：","サテラ："]
+    for texX in tex:
+        for command in commands:
+            if string ==command:
+                return True
+    return False
+def restart_program():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+def download_page(url):
+    version = (3,0)
+    cur_version = sys.version_info
+    if cur_version >= version:     #If the Current Version of Python is 3.0 or above
+        import urllib,request    #urllib library for Extracting web pages
+        try:
+            headers = {}
+            headers['User-Agent'] = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+            req = urllib,request.Request(url, headers = headers)
+            resp = urllib,request.urlopen(req)
+            respData = str(resp.read)
+            return respData
+        except Exception as e:
+            print(str(e))
+    else:                        #If the Current Version of Python is 2.x
+        import urllib2
+        try:
+            headers = {}
+            headers['User-Agent'] = "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"
+            req = urllib2.Request(url, headers = headers)
+            response = urllib2.urlopen(req)
+            page = response.read()
+            return page
+        except:
+            return"Page Not found"
+#Finding 'Next Image' from the given raw page
+def _images_get_next_item(s):
+    start_line = s.find('rg_di')
+    if start_line == -1:    #If no links are found then give an error!
+        end_quote = 0
+        link = "no_links"
+        return link, end_quote
+    else:
+        start_line = s.find('"class="rg_meta"')
+        start_content = s.find('"ou"',start_line+90)
+        end_content = s.find(',"ow"',start_content-90)
+        content_raw = str(s[start_content+6:end_content-1])
+        return content_raw, end_content
+#Getting all links with the help of '_images_get_next_image'
+def _images_get_all_items(page):
+    items = []
+    while True:
+        item, end_content = _images_get_next_item(page)
+        if item == "no_links":
+            break
+        else:
+            items.append(item)      #Append all the links in the list named 'Links'
+            time.sleep(0.1)        #Timer could be used to slow down the request for image downloads
+            page = page[end_content:]
+    return items
+    
+def summon(to, nama):
+    aa = ""
+    bb = ""
+    strt = int(14)
+    akh = int(14)
+    nm = nama
+    for mm in nm:
+        akh = akh + 2
+        aa += """{"S":"""+json.dumps(str(strt))+""","E":"""+json.dumps(str(akh))+""","M":"""+json.dumps(mm)+"},"""
+        strt = strt + 6
+        akh = akh + 4
+        bb += "\xe2\x95\xa0 @x \n"
+    aa = (aa[:int(len(aa)-1)])
+    msg = Message()
+    msg.to = to
+    msg.text = "\xe2\x95\x94\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\n"+bb+"\xe2\x95\x9a\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90\xe2\x95\x90"
+    msg.contentMetadata ={'MENTION':'{"MENTIONEES":['+aa+']}','EMTVER':'4'}
+    try:
+        vipro.sendMessage(msg)
+    except Exception as error:
+        print (error)    
+    
+def upload_tempimage(client):
+     '''
+         Upload a picture of a kitten. We don't ship one, so get creative!
+     '''
+     config = {
+         'album': album,
+         'name':  'bot auto upload',
+         'title': 'bot auto upload',
+         'description': 'bot auto upload'
+     }
+     print("Uploading image... ")
+     image = client.upload_from_path(image_path, config=config, anon=False)
+     print("Done")
+     print()
+     return image
+def updateProfilePicture(self, path):
+        file=open(path, 'rb')
+        files = {
+            'file': file
+        }
+        params = {
+            'name': 'media',
+            'type': 'image',
+            'oid': self.profile.mid,
+            'ver': '1.0',
+        }
+        data={
+            'params': json.dumps(params)
+        }
+        r = self.server.postContent(self.server.LINE_OBS_DOMAIN + '/talk/p/upload.nhn', data=data, files=files)
+        if r.status_code != 201:
+            raise Exception('Update profile picture failure.')
+        return True
+def sendVideo(self, to_, path):
+        M = Message(to=to_, text=None, contentType = 2)
+        M.contentMetadata = None
+        M.contentPreview = None
+        M2 = self.Talk.client.sendMessage(0,M)
+        M_id = M2.id
+        files = {
+            'file': open(path, 'rb'),
+        }
+        params = {
+            'name': 'media',
+            'oid': M_id,
+            'size': len(open(path, 'rb').read()),
+            'type': 'video',
+            'ver': '1.0',
+        }
+        data = {
+            'params': json.dumps(params)
+        }
+        r = self.post_content('https://os.line.naver.jp/talk/m/upload.nhn', data=data, files=files)
+        #print r
+        if r.status_code != 201:
+            raise Exception('Upload video failure.')
+        return True
+def sendVideoWithURL(self, to_, url):
+        path = '%s/pythonLine-%i.data' % (tempfile.gettempdir(), randint(0, 9))
+        r = requests.get(url, stream=True)
+        if r.status_code == 200:
+            with open(path, 'w') as f:
+                shutil.copyfileobj(r.raw, f)
+        else:
+            raise Exception('Download video failure.')
+        try:
+            self.sendVideo(to_, path)
+        except Exception as e:
+            raise (e)
+def sendAudioWithURL(self, to_, url):
+        path = '%s/pythonLine-%1.data' % (tempfile.gettempdir(), randint(0, 9))
+        r = requests.get(url, stream=True)
+        if r.status_code == 200:
+            with open(path, 'w') as f:
+                shutil.copyfileobj(r.raw, f)
+        else:
+            raise Exception('Download audio failure.')
+def sendAudio(self, to_, path):
+        M = Message(to=to_, text=None, contentType = 3)
+        M.contentMetadata = None
+        M.contentPreview = None
+        M2 = self.Talk.client.sendMessage(0,M)
+        M_id = M2.id
+        files = {
+            'file': open(path, 'rb'),
+        }
+        params = {
+            'name': 'media',
+            'oid': M_id,
+            'size': len(open(path, 'rb').read()),
+            'type': 'audio',
+            'ver': '1.0',
+        }
+        data = {
+            'params': json.dumps(params)
+        }
+        r = self.post_content('https://os.line.naver.jp/talk/m/upload.nhn', data=data, files=files)
+        if r.status_code != 201:
+            raise Exception('Upload audio failure.')
+        return True
+        try:
+            self.sendAudio(to_, path)
+        except Exception as e:
+            raise (e)
+def sendMessage(to, text, contentMetadata={}, contentType=0):
+    mes = Message()
+    mes.to, mes.from_ = to, profile.mid
+    mes.text = text
+    mes.contentType, mes.contentMetadata = contentType, contentMetadata
+    if to not in messageReq:
+        messageReq[to] = -1
+    messageReq[to] += 1
+def fullwidth(text):
+    '''converts a regular string to Unicode Fullwidth
+    Preconditions: text, a string'''
+    translator = ''
+    translator = translator.maketrans('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&()*+,-./:;<=>?@[]^_`{|}~' , '０１２３４５６７８９ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ！゛＃＄％＆（）＊＋、ー。／：；〈＝〉？＠［］＾＿‘｛｜｝～')
+    return text.translate(translator)
+def sendImage(self, to_, path):
+      M = Message(to=to_, text=None, contentType = 1)
+      M.contentMetadata = None
+      M.contentPreview = None
+      M2 = self._client.sendMessage(0,M)
+      M_id = M2.id
+      files = {
+         'file': open(path, 'rb'),
+      }
+      params = {
+         'name': 'media',
+         'oid': M_id,
+         'size': len(open(path, 'rb').read()),
+         'type': 'image',
+         'ver': '1.0',
+      }
+      data = {
+         'params': json.dumps(params)
+      }
+      r = self.post_content('https://obs-sg.line-apps.com/talk/m/upload.nhn', data=data, files=files)
+      if r.status_code != 201:
+         raise Exception('Upload image failure.')
+      return True
+def sendImageWithURL(self, to_, url):
+      path = '%s/pythonLine-%i.data' % (tempfile.gettempdir(), randint(0, 9))
+      r = requests.get(url, stream=True)
+      if r.status_code == 200:
+         with open(path, 'w') as f:
+            shutil.copyfileobj(r.raw, f)
+      else:
+         raise Exception('Download image failure.')
+      try:
+         self.sendImage(to_, path)
+      except:
+         try:
+            self.sendImage(to_, path)
+         except Exception as e:
+            raise e
+def NOTIFIED_READ_MESSAGE(op):
+    try:
+        if op.param1 in wait2['readPoint']:
+            Name = vipro.getContact(op.param2).displayName
+            if Name in wait2['readMember'][op.param1]:
+                pass
+            else:
+                wait2['readMember'][op.param1] += "\n・" + Name
+                wait2['ROM'][op.param1][op.param2] = "・" + Name
+        else:
+            pass
+    except:
+        pass
+def waktu(secs):
+    mins, secs = divmod(secs,60)
+    hours, mins = divmod(mins,60)
+return '%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)
 
-#Setbot = codecs.open("setting.json","r","utf-8")
-#Setmain = json.load(Setbot)
-
-#tz = pytz.timezone("Asia/Jakarta")
-#timeNow = datetime.now(tz=tz)
-
-#def restart_program(): 
-#    python = sys.executable
-#    os.execl(python, python, * sys.argv)
-
-#def restartBot():
-#    python = sys.executable
- #   os.execl(python, python, *sys.argv)
-
-#def waktu(secs):
-#    mins, secs = divmod(secs,60)
-#    hours, mins = divmod(mins,60)
- #   days, hours = divmod(hours, 24)
-  #  return '%02d Hari %02d Jam %02d Menit %02d Detik' % (days, hours, mins, secs)
-
-#def runtime(secs):
-#    mins, secs = divmod(secs,60)
-  #  hours, mins = divmod(mins,60)
-  #  days, hours = divmod(hours, 24)
-  #  return '%02d Hari %02d Jam %02d Menit %02d Detik' % (days, hours, mins, secs)
-
-#def mentionMembers(to, mid):
-  #  try:
- #       arrData = ""
- #       textx = "Total Mention User「{}」\n\n  [ Mention ]\n1. ".format(str(len(mid)))
-  #      arr = []
- #       no = 1
- #       num = 2
-  #      for i in mid:
-  #          mention = "@x\n"
-  #          slen = str(len(textx))
- #           elen = str(len(textx) + len(mention) - 1)
- #           arrData = {'S':slen, 'E':elen, 'M':i}
- #           arr.append(arrData)
- #           textx += mention
- #           if no < len(mid):
- #               no += 1
- #               textx += "%i. " % (num)
-  #              num=(num+1)
-  #          else:
-  #              try:
-  #                  no = "\n╚══[ {} ]".format(str(cl.getGroup(to).name))
- #               except:
-  #                  no = "\n╚══[ Success ]"
-  #      cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-  #  except Exception as error:
-  #      cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
-
-#def siderMembers(to, mid):
- #   try:
-  #      arrData = ""
-   #     textx = "Total Sider User「{}」\nHaii ".format(str(len(mid)))
-  #      arr = []
-  #      no = 1
-   #     num = 2
-   #     for i in mid:
-  #          mention = "@x\n"
-  #          slen = str(len(textx))
-  #          elen = str(len(textx) + len(mention) - 1)
-  #          arrData = {'S':slen, 'E':elen, 'M':i}
-  #          arr.append(arrData)
-  #          textx += mention+wait["mention"]
-   #         if no < len(mid):
-   #             no += 1
-    #            textx += "%i. " % (num)
-  #              num=(num+1)
-  #          else:
-   #             try:
-  #                  no = "\n╚══[ {} ]".format(str(cl.getGroup(to).name))
-   #             except:
-   #                 no = "\n╚══[ Success ]"
-    #    cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-    #except Exception as error:
-  #      cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
-
-#def welcomeMembers(to, mid):
-   # try:
-   #     arrData = ""
-    #    textx = "Total Member Masuk「{}」\nHaii  ".format(str(len(mid)))
-    #    arr = []
-     #   no = 1
-    #    num = 2
-    #    for i in mid:
-    #        ginfo = cl.getGroup(to)
-    #        mention = "@x\n"
-    #        slen = str(len(textx))
-    #        elen = str(len(textx) + len(mention) - 1)
-    #        arrData = {'S':slen, 'E':elen, 'M':i}
-    #        arr.append(arrData)
-   #         textx += mention+wait["welcome"]+"\nNama grup : "+str(ginfo.name)
-    #        if no < len(mid):
-    #            no += 1
-    #            textx += "%i " % (num)
-   #             num=(num+1)
-    #        else:
-    #            try:
-    #                no = "\n╚══[ {} ]".format(str(cl.getGroup(to).name))
-   #             except:
-   #                 no = "\n╚══[ Success ]"
-   #     cl.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-  #  except Exception as error:
-    #    cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
-
-#def sendMention(to, mid, firstmessage):
- #   try:
-#        arrData = ""
-#        text = "%s " %(str(firstmessage))
-#        arr = []
-#        mention = "@x \n"
-#        slen = str(len(text))
-#        elen = str(len(text) + len(mention) - 1)
-#        arrData = {'S':slen, 'E':elen, 'M':mid}
-#        arr.append(arrData)
-#        today = datetime.today()
-#        future = datetime(2018,3,1)
- #       hari = (str(future - today))
-#        comma = hari.find(",")
-#        hari = hari[:comma]
-#        teman = cl.getAllContactIds()
-#        gid = cl.getGroupIdsJoined()
-#        tz = pytz.timezone("Asia/Jakarta")
- #       timeNow = datetime.now(tz=tz)
-#        eltime = time.time() - mulai
-#        bot = runtime(eltime)
- #       text += mention+"™↔ Jam : "+datetime.strftime(timeNow,'%H:%M:%S')+" Wib\n™↔ Group : "+str(len(gid))+"\n™↔ Teman : "+str(len(teman))+"\n™↔ Expired : In "+hari+"\n™↔ Version : Saints Bot\n™↔ Tanggal : "+datetime.strftime(timeNow,'%Y-%m-%d')+"\n™↔ Runtime : \n • "+bot
- #       cl.sendMessage(to, text, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-#    except Exception as error:
- #       cl.sendMessage(to, "[ INFO ] Error :\n" + str(error))
-
-#def command(text):
-#    pesan = text.lower()
-#    if pesan.startswith(Setmain["keyCommand"]):
- #       cmd = pesan.replace(Setmain["keyCommand"],"")
- #   else:
-   #     cmd = "command"
-#    return cmd
+def command(text):
+    pesan = text.lower()
+    if pesan.startswith(Setmain["keyCommand"]):
+        cmd = pesan.replace(Setmain["keyCommand"],"")
+    else:
+        cmd = "command"
+    return cmd
 
 def help():
     key = Setmain["keyCommand"]
