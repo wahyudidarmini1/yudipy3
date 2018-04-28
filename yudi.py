@@ -399,7 +399,7 @@ def NOTIFIED_READ_MESSAGE(op):
 def waktu(secs):
     mins, secs = divmod(secs,60)
     hours, mins = divmod(mins,60)
-return '%02d Jam %02d Menit %02d Detik' % (hours, mins, secs)
+return '%02d Jam %02d Menit %02d Detik' % (hours,mins,secs)
 
 def command(text):
     pesan = text.lower()
