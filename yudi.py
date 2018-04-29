@@ -29,7 +29,7 @@ sw.log("Channel Access Token : " + str(channel11.channelAccessToken))
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-helpMenu="""
+helpMenu=""""""""""
 
 "™↔[ Selfbot Menu ]
 "™↔ " + key + "Me\n" + \
@@ -68,7 +68,7 @@ helpMenu="""
 "™↔ " + key + "Setkey「New Key」\n" + \
 "™↔ " + key + "Mykey\n" + \
 "™↔ " + key + "Resetkey\n" + \
-"™↔[Selfbot Hiburan]™
+"™↔[Selfbot Hiburan]
 "™↔ " + key + "ID line:「Id Line nya」\n" + \
 "™↔ " + key + "Sholat:「Nama Kota」\n" + \
 "™↔ " + key + "Cuaca:「Nama Kota」\n" + \
@@ -83,18 +83,16 @@ helpMenu="""
 "™↔ " + key + "Spamtag「@」\n" + \
 "™↔ " + key + "Spamcall:「jumlahnya」\n" + \
 "™↔ " + key + "Spamcall\n" + \
-"""
 
-"™↔[ Selfbot Protection ]™
+"™↔[ Selfbot Protection ]
 "™↔ " + key + "Notag「on/off」\n" + \
 "™↔ " + key + "Semuapro「on/off」\n" + \
 "™↔ " + key + "Protecturl「on/off」\n" + \
 "™↔ " + key + "Protectjoin「on/off」\n" + \
 "™↔ " + key + "Protectkick「on/off」\n" + \
 "™↔ " + key + "Protectcancel「on/off」\n" + \
-"""
 
-"™[ Selfbot Settings ]™
+"™[ Selfbot Settings ]
 "™↔ " + key + "Sticker「on/off」\n" + \
 "™↔ " + key + "Respon「on/off」\n" + \
 "™↔ " + key + "Contact「on/off」\n" + \
@@ -102,9 +100,8 @@ helpMenu="""
 "™↔ " + key + "Autoadd「on/off」\n" + \
 "™↔ " + key + "Welcome「on/off」\n" + \
 "™↔ " + key + "Autoleave「on/off」\n" + \
-"""
-
-"™↔[ Selfbot Admin ]™
+""""""
+"™↔[ Selfbot Admin ]
 "™↔ " + key + "Admin:on\n" + \
 "™↔ " + key + "Admin:repeat\n" + \
 "™↔ " + key + "Staff:on\n" + \
@@ -123,7 +120,7 @@ helpMenu="""
 "™↔ " + key + "Listprotect\n" + \
 
 helpMessage1 =
-"™[ Selfbot Blacklist ]™
+"™[ Selfbot Blacklist ]
 "™↔ " + key + "Blc\n" + \
 "™↔ " + key + "Ban:on\n" + \
 "™↔ " + key + "Unban:on\n" + \
@@ -137,7 +134,6 @@ helpMessage1 =
 "™↔ " + key + "Talkbanlist\n" + \
 "™↔ " + key + "Clearban\n" + \
 "™↔ " + key + "Refresh\n" + \
-"""
 
 "™↔[ Selfbot Menu ]
 "™↔ " + key + "Cek sider\n" + \
