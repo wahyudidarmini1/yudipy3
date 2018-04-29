@@ -1,36 +1,28 @@
-# -*- coding: utf-8 -*- 
-import linepy
+# -*- coding: utf-8 -*-
 from linepy import *
-from akad.ttypes import *
-from multiprocessing import Pool, Process
-from time import sleep
-import datetime, time, timeit, random, sys, ast, re, os, json, subprocess, threading, string, codecs, requests, ctypes, urllib
-from datetime import timedelta, date
-from datetime import datetime
-from bs4 import BeautifulSoup
-#import youtube_dl
+import json, time, random
 
-cl = LineClient(authToken='EsRMgnSNYmKyDmevHmo2.AZs3a8Vf+ipnhLTOmQbtuG.QjNuPnp0AucaAvOxSugXe5sMVPVyWCVjAt4kuhHNBQI=')
+cl = LineClient(authToken='EsNCZzJILnhpAWZglamb.drkXjI9kC7gz45kx2rUb2W.ULYBO74xVryLmSGAtBok2+4vqyMJ9Lfjkqz/0P7yTXQ=')
 cl.log("Auth Token : " + str(cl.authToken))
 channel = LineChannel(cl)
 cl.log("Channel Access Token : " + str(channel.channelAccessToken))
 
-ki = LineClient(authToken='EsChWMepSb9lKr6nS9i4./0DOo/10A+PUJG8iHA76Pa.9WT1pKEmje7MEZT/bcAcwS88hnqZnZ9b7LWIwv16eQE=')
+ki = LineClient(authToken='EsV4melT6DSiaPov2QT3.eXGEKA8y87MQtoFvPFGwuW.h0KZfk94tOhM4A8mOTHZOS0UOJruzBUpc4wmNElUvLY=')
 ki.log("Auth Token : " + str(ki.authToken))
 channel1 = LineChannel(ki)
 ki.log("Channel Access Token : " + str(channel1.channelAccessToken))
 
-kk = LineClient(authToken='EskEWkghcvWWrPV0kcg8.BQIP++PfVBkYt2USSm1tMa.2DtxflWZy0GTpvxS82l7LgoduPZ2i4UheyH65sbtYIc=')
+kk = LineClient(authToken='Es1HDMkO9LOdpP1Fwcx8.1e8nOeP/17yuiWiheXA//a.WL+ZBXoAX42fw4QnH2kyyQIuznnZaFq9YDr+9SvcT1c=')
 kk.log("Auth Token : " + str(kk.authToken))
 channel2 = LineChannel(kk)
 kk.log("Channel Access Token : " + str(channel2.channelAccessToken))
 
-kc = LineClient(authToken='EslXTbjsMkDvx5KKhfg4.bOiJimUzjLhiapSWdVjeva.+W+ASC1OphwuhdLcp6OK0Ljg2jZXMF3DV/6HxRDPI9c=')
+kc = LineClient(authToken='Es40yLFUTANU8lFvN2Lf.StMJ2yMSv7H5XrT17lGnZW.kEyscUBZhkTetrYq3H0q0SLXC21rYuzgIrMIeWDz+GA=')
 kc.log("Auth Token : " + str(kc.authToken))
 channel3 = LineChannel(kc)
 kc.log("Channel Access Token : " + str(channel3.channelAccessToken))
 
-sw = LineClient(authToken='EsCUR4WimC6YkPahv0Gb.DQKC4akNYSJx6AqIuzyS6W.3sA4k/G3W03Wb9msOv2S6yQKMaoK4hjsqp/HZi1Z8Hk=')
+sw = LineClient(authToken='Esngy5vCtMITaj020NAa.SD28EqyjtLBjPT144PdcQG.ZoMwy8ZoNUrB5dBEEfafy/z9px7qrEnn0gpQSq3cZ8U=')
 sw.log("Auth Token : " + str(sw.authToken))
 channel11 = LineChannel(sw)
 sw.log("Channel Access Token : " + str(channel11.channelAccessToken))
@@ -173,9 +165,9 @@ ABC = [ki,kk,kc]
 Bots = [mid,Amid,Bmid,Cmid,Zmid]
 Saints = admin + staff
 creator = ["u6b34b703cbc5fc83cd1e5b6832a05352"]
-owner = ["u6b34b703cbc5fc83cd1e5b6832a05352"]
-admin = ["u6b34b703cbc5fc83cd1e5b6832a05352"]
-staff = ["u6b34b703cbc5fc83cd1e5b6832a05352"]
+owner = ["u0d12b1262f4a73b199e39297d91b81db"]
+admin = ["u0d12b1262f4a73b199e39297d91b81db"]
+staff = ["u0d12b1262f4a73b199e39297d91b81db"]
 mid = cl.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
