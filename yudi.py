@@ -2,30 +2,25 @@
 from linepy import *
 import json, time, random
 
-cl = LineClient(authToken='EsNCZzJILnhpAWZglamb.drkXjI9kC7gz45kx2rUb2W.ULYBO74xVryLmSGAtBok2+4vqyMJ9Lfjkqz/0P7yTXQ=')
-cl.log("Auth Token : " + str(cl.authToken))
-channel = LineChannel(cl)
-cl.log("Channel Access Token : " + str(channel.channelAccessToken))
+client = LineClient()
+client = LineClient(authToken='EsNCZzJILnhpAWZglamb.drkXjI9kC7gz45kx2rUb2W.ULYBO74xVryLmSGAtBok2+4vqyMJ9Lfjkqz/0P7yTXQ=')
+client.log("Auth Token : " + str(client.authToken))
 
+ki = LineClient()
 ki = LineClient(authToken='EsV4melT6DSiaPov2QT3.eXGEKA8y87MQtoFvPFGwuW.h0KZfk94tOhM4A8mOTHZOS0UOJruzBUpc4wmNElUvLY=')
-ki.log("Auth Token : " + str(ki.authToken))
-channel1 = LineChannel(ki)
-ki.log("Channel Access Token : " + str(channel1.channelAccessToken))
+ki.log("Auth Token : " + str(client.authToken))
 
+kk = LineClient()
 kk = LineClient(authToken='Es1HDMkO9LOdpP1Fwcx8.1e8nOeP/17yuiWiheXA//a.WL+ZBXoAX42fw4QnH2kyyQIuznnZaFq9YDr+9SvcT1c=')
-kk.log("Auth Token : " + str(kk.authToken))
-channel2 = LineChannel(kk)
-kk.log("Channel Access Token : " + str(channel2.channelAccessToken))
+kk.log("Auth Token : " + str(client.authToken))
 
+kc = LineClient()
 kc = LineClient(authToken='Es40yLFUTANU8lFvN2Lf.StMJ2yMSv7H5XrT17lGnZW.kEyscUBZhkTetrYq3H0q0SLXC21rYuzgIrMIeWDz+GA=')
-kc.log("Auth Token : " + str(kc.authToken))
-channel3 = LineChannel(kc)
-kc.log("Channel Access Token : " + str(channel3.channelAccessToken))
+kc.log("Auth Token : " + str(client.authToken))
 
-sw = LineClient(authToken='Esngy5vCtMITaj020NAa.SD28EqyjtLBjPT144PdcQG.ZoMwy8ZoNUrB5dBEEfafy/z9px7qrEnn0gpQSq3cZ8U=')
-sw.log("Auth Token : " + str(sw.authToken))
-channel11 = LineChannel(sw)
-sw.log("Channel Access Token : " + str(channel11.channelAccessToken))
+sw = LineClient()
+sw = LineClient(authToken='Es40yLFUTANU8lFvN2Lf.StMJ2yMSv7H5XrT17lGnZW.kEyscUBZhkTetrYq3H0q0SLXC21rYuzgIrMIeWDz+GA=')
+sw.log("Auth Token : " + str(client.authToken))
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
