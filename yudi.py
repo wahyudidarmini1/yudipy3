@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*- 
-import LINEPY
+#import LINEPY
 from LINEPY import *
 from akad.ttypes import *
 from multiprocessing import Pool, Process
