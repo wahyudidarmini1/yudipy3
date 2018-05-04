@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- 
 #import LINEPY
-from LINEPY import *
+#from LINEPY import *
 from akad.ttypes import *
 from multiprocessing import Pool, Process
 from time import sleep
